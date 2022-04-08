@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" contet="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="style.css">
+    <title>IAE</title>
+
+</head>
+
+
+<body>
+
+
+    <h1> Interface de Agilização de Emergência (IAE)</h1>
+    <div id="div">
+        <div class="div2">
+            <p>
+            <h3>Cadastro</h3>
+            <p></p>
+            <h2>Nome Completo </h2> <input type="text" id="inNome" autofocus />
+            <p><h2>N° de Prioridade</h2>
+
+                <input type="text" id="inPri" required>
+                <label for="nome"> </label>
+            <p>
+                <input type="submit" value="Adicionar Paciente" id="btAdicionar">
+            </p>
+            </p>
+        </div>
+        <div class="div2">
+            <input type="submit" value="Listar Pacientes" id="btListar">
+            <input type="submit" value="Listar Graus de atendimento" id="btFiltrar">
+            <pre id="outLista"> </pre>
+
+        </div>
+    </div>
+    <script>
+        var pacientes = [];
+
+        var inNome = document.getElementById("inNome");
+        var inPri = document.getElementById("inPri");
+        var btAdicionar = document.getElementById("btAdicionar");
+        var btListar = document.getElementById("btListar");
+        var btFiltrar = document.getElementById("btFiltrar");
+        var outLista = document.getElementById("outLista");
+
+        btAdicionar.addEventListener("click", adicionarPaciente);
+        function adicionarPaciente() {
+
+            var nome = inNome.value;
+            var grau = Number(inPri.value);
+
+            if (nome == "" || grau == 0 || isNaN(grau)) {
+                alert("Informe corretamente os dados");
+                inNome.focus();
+                return;
+            }
+
+            pacientes.push({ nome: nome, grau: grau });
+
+            inNome.value = "";
+            inPri.value = "";
+            inNome.focus();
+
+            listarPacientes();
+        }
+
+        btListar.addEventListener("click", listarPacientes);
+        function listarPacientes() {
+            if (pacientes.length == 0) {
+                alert("Não há Pacientes na lista");
+                return;
+            }
+
+            var lista = "";
+
+            for (var i = 0; i < pacientes.length; i++) {
+                lista += pacientes[i].nome + " Prioridade: " + pacientes[i].grau + "\n";
+            }
+            outLista.textContent = lista
+        }
+
+        btFiltrar.addEventListener("click", filtrarPacientes);
+        function filtrarPacientes() {
+            var maximo = Number(prompt("Digite o número da prioridade"));
+
+            if (maximo == 0 || isNaN(maximo)) {
+                return;
+            }
+
+            var lista = "";
+
+            for (var i = 0; i < pacientes.length; i++) {
+
+                if (pacientes[i].grau >= maximo) {
+                    lista += pacientes[i].nome + " Prioridade " + pacientes[i].grau + "\n";
+
+
+                }
+                if (lista == "") {
+                    outLista.textContent = "Digite uma prioridade Valida entre 1 e 5";
+                }
+                else {
+                    outLista.textContent = "Prioridades " + "\n----------\n" + lista;
+                    outLista.prompt = "ok" + lista;
+                }
+            }
+        }
+
+    </script>
+</body>
+
+</html>
