@@ -1,9 +1,10 @@
 body {  
   justify-content: center; 
   align-items: center; 
-  height: 98vh; 
+  height: 100px; 
 /*  background-image: linear-gradient(45deg,rgb(14, 223, 25) ,rgb(50, 215, 236)) */
-background-image: url(./src/SAUDE.jpg);
+background-image: url(./src/fundo-uncisal.jpeg);
+background-color: #fff
 }
 
 
@@ -41,7 +42,7 @@ h1{
   font-size: 62px;
   color: #071ffd;
   padding: 10px 0;
-  font-family: Arial,sans-'se'rif;
+  font-family: Arial,sans-serif;
   font-weight: bold;
   text-align: center;
   padding-bottom: 30px;
@@ -62,7 +63,7 @@ h2{
   font-size: 20px;
   color: #ffffffff;
   padding: 5px 0;
-  font-family: Arial,sans-'se'rif;
+  font-family: Arial,sans-serif;
   font-weight: bold;
   text-align: center;
   padding-bottom: 5px;
@@ -80,7 +81,7 @@ h3{
   font-size: 62px;
   color: #ffffffff;
   padding: 5px 0;
-  font-family: Arial,sans-'se'rif;
+  font-family: Arial,sans-serif;
   font-weight: bold;
   text-align: center;
   padding-bottom: 5px;
